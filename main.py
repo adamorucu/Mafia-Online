@@ -13,16 +13,20 @@ def main():
 
 @app.route('/join')
 def join():
-    room_id = requests.args.get('roomid')
-    name = requests.args.get('name')
+    room_id = request.args.get('roomid')
+    name = request.args.get('name')
+    print(room_id)
+    print(name)
 
     if room_id in rooms:
         room = rooms[room_id]
         room.add_player(name)
-    else: 
+    else:
+        print(room_id)
         room = Room(room_id)
         rooms[room_id] = room
         room.add_player(name)
+    return room_id
 
 @app.route('/start')
 def start():
