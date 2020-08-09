@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script>
+    var socket;            
+    $(document).ready(function() {
+        // The http vs. https is important. Use http for localhost!
+        socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Button was clicked
+        document.getElementById("startbtn").onclick = function() {
+            // Get the text value
+            // var roomname = document.getElementById("roomname").value;
+            // var playername = document.getElementById("playername").value;
+
+            console.log('start game')
+            socket.emit('start');
+        }
+    });
+</script>
+
+Room: {{roomname}}
+
+<input type="button" value="Start Game" id="startbtn">
+
+{% endblock%}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    var socket;            
+    $(document).ready(function() {
+        // The http vs. https is important. Use http for localhost!
+        socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Button was clicked
+        document.getElementById("joinbtn").onclick = function() {
+            // Get the text value
+            var roomname = document.getElementById("roomname").value;
+            var playername = document.getElementById("playername").value;
+
+            console.log('join game')
+            socket.emit('join', {'roomname': roomname, 'playername': playername});
+        }
+    });
+</script>
+
+<form action="" method="post">
+    <input type="text" id="roomname" placeholder="Room Name">
+    <input type="text" id="playername" placeholder="Player Name">
+    <input type="button" value="Join" id="joinbtn">
+</form>
+
+{% endblock%}
