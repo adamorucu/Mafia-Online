@@ -29,6 +29,7 @@ def join(data):
         room = Room(room_id)
         rooms[room_id] = room
         room.add_player(name)
+        print('redirecting')
         return redirect(url_for('hostwait'))
 
 
@@ -38,29 +39,16 @@ def start(data):
     room_id = data['roomname']
 
 
-# @app.route('/join')
-# def join():
-#     sess_id = request.namespace.socket.sessid
-#     room_id = request.args.get('roomid')
-#     name = request.args.get('name')
-#     print(room_id)
-#     print(name)
-
-#     if room_id in rooms:
-#         room = rooms[room_id]
-#         room.add_player(name)
-#     else:
-#         print(room_id)
-#         room = Room(room_id)
-#         rooms[room_id] = room
-#         room.add_player(name)
-#     return room_id
-
-@app.route('/waitingroom')
-def wait(): return render_template('wait.html', roomname='roomname')
+@app.route('/wait')
+def wait(): 
+    print('wait')
+    room = request.args.get('room')
+    return render_template('wait.html', roomname=room)
 
 @app.route('/hostwait')
-def hostwait(): return render_template('hostwait.html')
+def hostwait(): 
+    print('hostwait')
+    return render_template('hostwait.html')
 
 
 if __name__ == '__main__':
