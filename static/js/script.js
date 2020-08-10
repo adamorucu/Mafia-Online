@@ -63,6 +63,8 @@ $(document).ready(function() {
         document.getElementById("waitingroom").style.display = "none";
         document.getElementById("hostwait").style.display = "none";
         document.getElementById("game").style.display = "block";
+
+        document.getElementById("explanation").innerHTML = data.explanation;
     });
 
 });

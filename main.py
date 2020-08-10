@@ -33,7 +33,7 @@ def join(data):
         socketio.emit('joinaff', {'ishost': 'F', 'room': room_id, 'players': room.player_names + [name]})
     else:
         print(room_id)
-        room = Room(room_id)
+        room = Room(room_id, sessid)
         rooms[room_id] = room
         # room.add_player(name)
         socketio.emit('joinaff', {'ishost': "T", 'room': room_id, 'players': room.player_names + [name]})
@@ -50,7 +50,7 @@ def start(data):
     print(room.roles)
     for ind, player in enumerate(room.sessids):
         print('EMITTING', {'role': room.roles[ind]}, ' to', player)
-        socketio.emit('startgame', {'role': room.roles[ind]}, to=player)
+        socketio.emit('startgame', {'role': room.roles[ind], 'explanation': room.expl(room.roles[ind])}, to=player)
 
 
 

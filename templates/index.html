@@ -31,17 +31,20 @@
     <img src="{{url_for('static', filename='img/qr.png')}}" alt="QR Image">
 </div>
 
-<div class="jumbotron">
-    <div id="waitingroom">
+<div class="rest">
+    <div id="waitingroom" class="card-body">
         <p id="room" class="display-4">Room: </p>
         <p class="lead">Players: </p>
         <div id="players"></div>
     </div>
     <div id=hostwait><button type="button" class="btn btn-dark" id="startbtn">Start Game</button></div>
     
-    <div id="game" class="lead">
-        Your role is:
+    <div id="game" class="card-body">
+        <div class="lead">
+            Your role is:
+        </div>
         <div class="display-4" id="rolename"></div>
+        <div class="lead" id="explanation"></div>
     </div>
 </div>
 

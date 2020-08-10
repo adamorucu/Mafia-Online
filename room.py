@@ -2,10 +2,11 @@ import math
 from random import shuffle
 
 class Room:
-    def __init__(self, room_id):
+    def __init__(self, room_id, host):
         self.id = room_id
         self.sessids = []
         self.player_names = []
+        self.host = host
 
     def add_player(self, sessid, player_name):
         if sessid not in self.sessids:
@@ -28,6 +29,9 @@ class Room:
         self.roles = roles
         return self.roles
         # return dict(set(self.players, roles))
+
+    def expl(self, role):
+        return 'role explanation'
 
 if __name__ == '__main__':
     room  = Room('aaaa')
