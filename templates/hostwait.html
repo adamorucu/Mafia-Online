@@ -1,11 +1,17 @@
-{% extends "wait.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
+
 <script>
     var socket;            
     $(document).ready(function() {
         // The http vs. https is important. Use http for localhost!
         socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('startgame', function (data) {
+            print('starting')
+            window.location = 'http://' + document.domain + ':' + location.port + data.url + '?role=' + data.room;
+        });
 
         // Button was clicked
         document.getElementById("startbtn").onclick = function() {
@@ -14,7 +20,8 @@
             // var playername = document.getElementById("playername").value;
 
             console.log('start game')
-            socket.emit('start');
+            const qstring = new URLSearchParams(window.location.search)
+            socket.emit('start', {'roomname': qstring.get('room')});
         }
     });
 </script>
