@@ -1,0 +1,12 @@
+#rolename{
+    font-weight: bold;
+    font-size: 60px;
+}
+
+form, #waitingroom{
+    margin: 10px;
+}
+
+#waitingroom {
+    margin: 10px;
+}

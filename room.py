@@ -4,17 +4,20 @@ from random import shuffle
 class Room:
     def __init__(self, room_id):
         self.id = room_id
-        self.players = []
+        self.sessids = []
+        self.player_names = []
 
-    def add_player(self, player):
-        if player not in self.players:
-            self.players.append(player)
+    def add_player(self, sessid, player_name):
+        if sessid not in self.sessids:
+            self.sessids.append(sessid)
+        if player_name not in self.player_names:
+            self.player_names.append(player_name)
 
-    def remove_player(self, player):
-        self.players.remove(player)
+    # def remove_player(self, player):
+    #     self.players.remove(player)
 
     def assign_roles(self):
-        room_size = len(self.players)
+        room_size = len(self.sessids)
         roles = []
         roles += ['Mafia'] * (room_size // 3)
         roles += ['Police']
@@ -35,5 +38,3 @@ if __name__ == '__main__':
     print(room.players)
     room.assign_roles()
     print(room.roles)
-
-    

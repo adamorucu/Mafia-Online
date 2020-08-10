@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
+import pyqrcode
 from flask_socketio import SocketIO
+import os
 
 from room import Room
 
@@ -12,7 +14,11 @@ socketio = SocketIO(app)
 rooms = {}
 
 @app.route("/")
-def main(): return render_template('index.html')
+def main(): 
+    print(request.url)
+    url = pyqrcode.create(request.url)
+    url.png('static/img/qr.png', scale=5)
+    return render_template('index.html')
 
 
 @socketio.on('join')
@@ -24,14 +30,15 @@ def join(data):
     if room_id in rooms:
         room = rooms[room_id]
         # room.add_player(name)
-        socketio.emit('joinaff', {'ishost': 'F', 'room': room_id})
+        socketio.emit('joinaff', {'ishost': 'F', 'room': room_id, 'players': room.player_names + [name]})
     else:
         print(room_id)
         room = Room(room_id)
         rooms[room_id] = room
         # room.add_player(name)
-        socketio.emit('joinaff', {'ishost': "T", 'room': room_id})
-    room.add_player(sessid)
+        socketio.emit('joinaff', {'ishost': "T", 'room': room_id, 'players': room.player_names + [name]})
+    room.add_player(sessid, name)
+    # socketio.emit('plist', {'players': room.sessids}, to=room.sessids[0])
 
 
 @socketio.on('start')
@@ -41,9 +48,11 @@ def start(data):
     room = rooms[room_id]
     room.assign_roles()
     print(room.roles)
-    for ind, player in enumerate(room.players):
-        print('EMITTING', {'role': room.roles[ind]}, '/n /t to', player)
+    for ind, player in enumerate(room.sessids):
+        print('EMITTING', {'role': room.roles[ind]}, ' to', player)
         socketio.emit('startgame', {'role': room.roles[ind]}, to=player)
+
+
 
 
 # @app.route('/waitingroom')
@@ -65,5 +74,5 @@ def start(data):
 
 
 if __name__ == '__main__':
-    # app.run(host = '0.0.0.0')
-    socketio.run(app)
+    # app.host = 
+    socketio.run(app, host='0.0.0.0')
