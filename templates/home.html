@@ -16,7 +16,10 @@
 
             console.log('join game')
             socket.emit('join', {'roomname': roomname, 'playername': playername});
-            location.replace('http://' + document.domain + ':' + location.port + '/wait?' + 'room=' + roomname)
+            // location.replace('http://' + document.domain + ':' + location.port + '/wait?' + 'room=' + roomname)
+            socket.on('redirect', function (data) {
+                window.location = data.url + '?room=' + data.room;
+            });
         }
     });
 </script>

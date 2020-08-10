@@ -1,8 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<script>
+    var socket;            
+    $(document).ready(function() {
+        // The http vs. https is important. Use http for localhost!
+        socket = io.connect('http://' + document.domain + ':' + location.port);
 
-Room: {{roomname}}
-Please wait.
+        socket.on('startgame', function (data) {
+            window.location = data.url + '?role=' + data.room;
+        });
+        
+</script>
+
+Room: {{roomname}}<br>
+Players:
+
+    {% block content %}
+
+    {% endblock %}
 
 {% endblock%}

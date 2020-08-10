@@ -1,3 +1,6 @@
+import numpy as np
+import math
+
 class Room:
     def __init__(self, room_id):
         self.id = room_id
@@ -10,10 +13,12 @@ class Room:
     def remove_player(self, player):
         self.players.remove(player)
 
-    def play(self):
+    def assign_roles(self):
         room_size = len(self.players)
-        roles = {}
-        for player in self.players:
-            roles[player] = 'Citizen'
-            
-        return roles
+        roles = []
+        roles += ['Mafia'] * room_size // 3
+        roles += ['Police']
+        roles += ['Priest']
+        roles += ['Citizen'] * room_size - 2 - room_size // 3
+        self.roles = np.random.shuffle(roles)
+        return dict(set(self.players, roles))
