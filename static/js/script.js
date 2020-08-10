@@ -46,6 +46,7 @@ $(document).ready(function() {
         console.log('starting', data)
         document.getElementById("rolename").innerHTML = data.role;
         document.getElementById("waitingroom").style.display = "none";
+        document.getElementById("hostwait").style.display = "none";
         document.getElementById("game").style.display = "block";
     });
 });
