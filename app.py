@@ -49,4 +49,4 @@ def start(data):
         socketio.emit('startgame', {'role': room.roles[ind], 'explanation': room.expl(room.roles[ind])}, to=player)
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0')
+    socketio.run(app)
