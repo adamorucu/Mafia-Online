@@ -10,7 +10,7 @@ $(document).ready(function() {
     document.getElementById("game").style.display = "none";
     document.getElementById("hostwait").style.display = "none";
 
-    socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket = io.connect(window.location);
 
     socket.on('joinaff', function (data) {
         console.log('joinaff', data)
