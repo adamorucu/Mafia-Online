@@ -14,13 +14,14 @@ $(document).ready(function() {
 
     socket.on('joinaff', function (data) {
         console.log('joinaff', data)
+        if(roomname == data.room){
         if(data.ishost == 'T'){
             ishost = 1
             document.getElementById("hostwait").style.display = "block";
         }
         else{
             ishost = 0
-        }
+        }}
 
         const myNode = document.getElementById('players');
         while (myNode.firstChild) {

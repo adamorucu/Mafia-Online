@@ -14,9 +14,6 @@ class Room:
         if player_name not in self.player_names:
             self.player_names.append(player_name)
 
-    # def remove_player(self, player):
-    #     self.players.remove(player)
-
     def assign_roles(self):
         room_size = len(self.sessids)
         roles = []
@@ -32,13 +29,3 @@ class Room:
 
     def expl(self, role):
         return 'role explanation'
-
-if __name__ == '__main__':
-    room  = Room('aaaa')
-    room.add_player('one')
-    room.add_player('three')
-    room.add_player('two')
-    room.add_player('four')
-    print(room.players)
-    room.assign_roles()
-    print(room.roles)

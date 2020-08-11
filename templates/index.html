@@ -5,11 +5,6 @@
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 <div id="join-form">
-    <!-- <form action="" method="post">
-        <input type="text" id="roomname" placeholder="Room Name">
-        <input type="text" id="playername" placeholder="Player Name">
-        <input type="button" value="Join" id="joinbtn">
-    </form> -->
     <form>
         <div class="form-group row">
             <label for="roomname" class="col-sm-2 col-form-label">Room Name:</label>
@@ -23,9 +18,7 @@
                 <input type="text" class="form-control" id="playername" placeholder="player">
             </div>
         </div>
-        <!-- <div class="form-group row"> -->
-            <button type="button" class="btn btn-dark" id="joinbtn">Join</button>
-        <!-- </div> -->
+        <button type="button" class="btn btn-dark" id="joinbtn">Join</button>
     </form>
 
     <img src="{{url_for('static', filename='img/qr.png')}}" alt="QR Image">

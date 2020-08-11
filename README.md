@@ -8,3 +8,4 @@ An online version of the mafia game.
 - Add explanation for the roles
 - Track the host throughout the game
 - Perhaps add ability to use powers during the night
+- add qr to automatically fill room name
