@@ -10,8 +10,7 @@ $(document).ready(function() {
     document.getElementById("game").style.display = "none";
     document.getElementById("hostwait").style.display = "none";
 
-    socket = io.connect(window.location);
-
+    socket = io.connect(window.location.href);
     socket.on('joinaff', function (data) {
         console.log('joinaff', data)
         // if(roomname == data.room){
