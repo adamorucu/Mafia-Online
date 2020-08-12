@@ -8,9 +8,13 @@ $(document).ready(function() {
     document.getElementById("waitingroom").style.display = "none";
     document.getElementById("game").style.display = "none";
     document.getElementById("hostwait").style.display = "none";
-
-    socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-    console.log(location.protocol + '//' + document.domain + ':' + location.port)
+    
+    conn_url = location.protocol + '//' + document.domain
+    if (location.port){
+        conn_url += ':' + location.port
+    }
+    socket = io.connect(conn_url);
+    console.log(conn_url)
     // Join clicked, moving to waitingroom
     document.getElementById("joinbtn").onclick = function() {
         roomname = document.getElementById("roomname").value;
