@@ -1,6 +1,6 @@
 # Mafia-Online
 
-An online version of the mafia game.
+Online supplement to the mafia strategy game.
 [View the site](https://online-mafia-game.herokuapp.com/).
 
 ## To-Do
