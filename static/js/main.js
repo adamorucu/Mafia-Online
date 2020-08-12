@@ -10,13 +10,13 @@ $(document).ready(function() {
     document.getElementById("hostwait").style.display = "none";
 
     socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-
+    console.log(location.protocol + '//' + document.domain + ':' + location.port)
     // Join clicked, moving to waitingroom
     document.getElementById("joinbtn").onclick = function() {
         roomname = document.getElementById("roomname").value;
         playername = document.getElementById("playername").value;
         socket.emit('join', {'roomname': roomname, 'playername': playername});
-        
+
         document.getElementById("room").innerHTML = roomname;
         document.getElementById("join-form").style.display = "none"; // hide
         document.getElementById("waitingroom").style.display = "block"; // show
