@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<div id="join-form">
+    <form>
+        <div class="form-group row">
+            <label for="roomname" class="col-sm-2 col-form-label">Room Name:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="roomname" placeholder="room">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="playername" class="col-sm-2 col-form-label">Player Name:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="playername" placeholder="player">
+            </div>
+        </div>
+        <button type="button" class="btn btn-dark" id="joinbtn">Join</button>
+    </form>
+
+    <img src="{{url_for('static', filename='img/main_qr.png')}}" alt="QR Image">
+</div>
+
+<div class="rest">
+    <div id="waitingroom" class="card-body">
+        <p id="room" class="display-4">Room: </p>
+        <p class="lead">Players: </p>
+        <div id="players"></div>
+    </div>
+    <div id=hostwait><button type="button" class="btn btn-dark" id="startbtn">Start Game</button></div>
+    
+    <div id="game" class="card-body">
+        <div class="lead">
+            Your role is:
+        </div>
+        <div class="display-4" id="rolename"></div>
+        <div class="lead" id="explanation"></div>
+    </div>
+</div>
+
+{% endblock%}

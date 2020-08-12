@@ -4,7 +4,7 @@ import pyqrcode
 from flask_socketio import SocketIO
 import os
 
-from room import Room
+from game import Game
 
 
 app = Flask(__name__)

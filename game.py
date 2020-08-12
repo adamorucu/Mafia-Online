@@ -1,9 +1,9 @@
 import math
 from random import shuffle
 
-class Room:
-    def __init__(self, room_id, host):
-        self.id = room_id
+class Game:
+    def __init__(self, room, host):
+        self.name = room
         self.sessids = []
         self.player_names = []
         self.host = host
